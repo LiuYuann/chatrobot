@@ -11,14 +11,15 @@
 cd chatrobot
 ```
 
-进入chatrobot目录，修改CONF.py文件,目前机器人回复消息是调用第三方的API：https://www.ownthink.com/docs/bot/
-，你可查看相关文档并注册账户申请Appid。
+进入chatrobot目录，修改CONF.py文件,目前机器人回复消息是调用第三方的API：https://www.ownthink.com/docs/bot ，
+你可查看相关文档并注册账户申请Appid。
 ### 安装依赖
 
 ```
 pip3 install -r requirements.txt
 ```
 ## 运行
+### 运行机器人
 
 ```
 python run.py
