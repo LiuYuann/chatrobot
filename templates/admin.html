@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>聊天机器人/管理员</title>
+    <link rel="icon" type="image/x-icon" href="{{ static_url("favicon.ico") }}" mce_href="{{ static_url("favicon.ico") }}"/>
+</head>
+<body>
+        <h1>监控窗口</h1>
+<div id="contents" style="height:500px;overflow:auto;"></div>
+
+<!-- jQuery -->
+<script src="{{ static_url("jquery-3.3.1.min.js") }}"></script>
+<script type="text/javascript">
+    var ws = new WebSocket(`ws://127.0.0.1:{{port}}/chat?admin=1`);
+    ws.onmessage = function (e) {
+        $("#contents").append("<p>" + e.data + "</p>");
+    };
+</script>
+</body>
+</html>
+
+
