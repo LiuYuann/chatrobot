@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>聊天机器人</title>
+    <link rel="bookmark" type="image/x-icon" href="static/favicon.ico" mce_href="static/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico" mce_href="static/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico" mce_href="static/favicon.ico"/>
+</head>
+<body>
+<div id="contents" style="height:500px;overflow:auto;"></div>
+<div>
+    <textarea id="msg"></textarea>
+    <a href="javascript:;" onclick="sendMsg()">发送</a>
+</div>
+
+<!-- jQuery -->
+<script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var ws = new WebSocket("ws://127.0.0.1:2222/chat");
+    ws.onmessage = function (e) {
+        $("#contents").append("<p>" + e.data + "</p>");
+    };
+
+    function sendMsg() {
+        var msg = $("#msg").val();
+        var mydate = new Date();
+        reqMsg='['+mydate.getHours()+':'+mydate.getMinutes()+':'+mydate.getSeconds()+']'+' '+msg;
+        $("#contents").append("<p>" + reqMsg + "</p>");
+        ws.send(msg);
+        $("#msg").val("");
+    }
+</script>
+</body>
+</html>
+
+
